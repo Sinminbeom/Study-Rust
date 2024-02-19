@@ -1,27 +1,21 @@
-use awc::{Client, error::WsProtocolError};
-use actix_rt::System;
-use futures::stream::StreamExt;
+use awc::{Client, ws};
+use futures::SinkExt;
+use futures::StreamExt;
 
-#[actix_web::main]
-async fn main() -> Result<(), WsProtocolError> {
-    // Actix 웹 클라이언트 생성
-    let client = Client::new();
+#[actix_rt::main]
+async fn main() {
+    let (_resp, mut connection) = Client::new()
+        .ws("ws://localhost:8080/vpu1")
+        .connect()
+        .await
+        .unwrap();
 
-    // WebSocket URL 설정
-    let url = "ws://localhost:8080/client";
+    connection
+        .send(ws::Message::Text("Echo".into()))
+        .await
+        .unwrap();
 
-    // Actix 웹 소켓 연결
-    let (response, mut connection) = client.ws(url).connect().await?;
+    let response = connection.next().await.unwrap().unwrap();
 
-    println!("Connected to: {}", response.url());
-
-    // 웹 소켓 메시지 수신 및 처리
-    let _ = System::new().block_on(async {
-        // 소켓 연결이 유지되는 동안 메시지 수신
-        while let Some(msg) = connection.next().await {
-            println!("Received: {:?}", msg);
-        }
-    });
-
-    Ok(())
+    println!("{:?}", response);
 }
