@@ -5,8 +5,29 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "cpu"
+path = "src/cpu/bin/main.rs"
+
+[[bin]]
+name = "vpu1"
+path = "src/vpu1/bin/main.rs"
+
+[[bin]]
+name = "vpu2"
+path = "src/vpu2/bin/main.rs"
+
+[[bin]]
+name = "vpu3"
+path = "src/vpu3/bin/main.rs"
+
 [dependencies]
 actix = "0.13.3"
 actix-web = "4.5.1"
 actix-web-actors = "4.3.0"
-rust_mylib = { git = "https://github.com/Sinminbeom/rust_mylib.git", branch = "main" }
+rust_mylib = { git = "https://github.com/Sinminbeom/rust_mylib.git", branch = "#3-feat-add-macro" }
+serde = { version = "1.0.196", features = ["derive"] }
+uuid = { version = "0.8.0", features = ["v4", "serde"]}
+awc = { version = "3.0.0-beta.11", features = [ "openssl" ] }
+actix-rt = "2.9.0"
+futures = "0.3.30"

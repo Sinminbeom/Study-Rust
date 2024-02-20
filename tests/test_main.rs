@@ -11,3 +11,10 @@
 //     // references_and_shadowing::references_and_shadowing();
 //     // references_in_functions::references_in_functions();
 // }
+
+// use rust_mylib::my_macro;
+//
+// fn main() {
+//     my_macro!();
+// }
+mod server;
