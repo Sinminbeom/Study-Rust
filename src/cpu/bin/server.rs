@@ -4,7 +4,7 @@ use actix_web_actors::ws;
 use std::time::{Duration};
 use serde::{Deserialize, Serialize};
 
-const HEARTBEAT_INTERVAL: Duration = Duration::from_secs(100);
+const HEARTBEAT_INTERVAL: Duration = Duration::from_secs(3);
 // const CLIENT_TIMEOUT: Duration = Duration::from_secs(10);
 
 /// Define HTTP actor

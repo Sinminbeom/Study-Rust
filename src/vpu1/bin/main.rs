@@ -1,6 +1,7 @@
 use awc::{Client, ws};
-use futures::SinkExt;
 use futures::StreamExt;
+use std::thread;
+use std::time::{Duration, Instant};
 
 #[actix_rt::main]
 async fn main() {
@@ -8,14 +9,18 @@ async fn main() {
         .ws("ws://localhost:8080/vpu1")
         .connect()
         .await
-        .unwrap();
+        .expect("Failed to connect");
 
-    connection
-        .send(ws::Message::Text("Echo".into()))
-        .await
-        .unwrap();
+    loop {
+        // connection
+        // .send(ws::Message::Text("Echo".into()))
+        // .await
+        // .expect("Failed to send message");
 
-    let response = connection.next().await.unwrap().unwrap();
+        let response = connection.next().await.unwrap().unwrap();
 
-    println!("{:?}", response);
+        println!("{:?}", response);
+
+        thread::sleep(Duration::from_secs(1));
+    }
 }
