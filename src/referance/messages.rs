@@ -10,14 +10,14 @@ pub struct WsMessage(pub String);
 pub struct Connect {
     pub addr: Recipient<WsMessage>,
     pub lobby_id: Uuid,
-    pub self_id: Uuid
+    pub self_id: Uuid,
 }
 
 #[derive(Message)]
 #[rtype(result = "()")]
 pub struct Disconnect {
+    pub id: Uuid,
     pub room_id: Uuid,
-    pub id: Uuid
 }
 
 #[derive(Message)]
