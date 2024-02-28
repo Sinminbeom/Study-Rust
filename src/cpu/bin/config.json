@@ -1,0 +1,36 @@
+{
+  "vpu1": {
+    "sensors": [
+      {
+        "name": "am20",
+        "type":"camera",
+        "ip": "192.168.1.100",
+        "port": "1111"
+      },
+      {
+        "name": "am20",
+        "type":"camera",
+        "ip": "192.168.1.101",
+        "port": "1112"
+      },
+      {
+        "name": "am20",
+        "type":"camera",
+        "ip": "192.168.1.102",
+        "port": "1113"
+      },
+      {
+        "name": "am20",
+        "type":"camera",
+        "ip": "192.168.1.103",
+        "port": "1114"
+      }
+    ]
+  },
+  "vpu2": {
+    "sensors": []
+  },
+  "vpu3": {
+    "sensors": []
+  }
+}

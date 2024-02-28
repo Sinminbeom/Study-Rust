@@ -1,6 +1,5 @@
 use actix::{Handler, Message, Recipient};
 use serde::{Deserialize, Serialize};
-use crate::server::WsConn;
 use uuid::Uuid;
 
 //WsConn responds to this to pipe it through to the actual client
